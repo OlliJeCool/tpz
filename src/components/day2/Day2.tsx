@@ -20,7 +20,7 @@ const Day2 = () => {
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
         onClick={() => setFound(true)}
-        className="w-24 h-12 transition-colors hover:bg-red-400 absolute top-48 left-48 rounded-lg text-rose-100 hover:text-"
+        className="w-24 h-12 transition-colors hover:bg-red-400 absolute top-48 left-48 hover:text-sky-300 font-bold rounded-lg text-rose-100 hover:text-"
       >
         Kuk o.O
       </motion.button>
@@ -47,7 +47,9 @@ const Day2 = () => {
           transition={{ duration: 0.8, delay: 1, type: "spring" }}
           className="bg-red-400 w-24 h-24 rounded-full flex justify-center items-center"
         >
-          {found ? <h1 className="font-bold text-6xl">Š</h1> : null}
+          {found ? (
+            <h1 className="font-bold text-6xl text-rose-100">Š</h1>
+          ) : null}
         </motion.div>
       </div>
     </motion.div>
