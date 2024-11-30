@@ -50,24 +50,28 @@ const Game = ({ triggerSnow }: gameProps) => {
         changeColor={handleChange}
         correct={isCorret[0]}
         index={0}
+        delay={0.2}
       />
       <Tile
         color={colors[sequence[1]]}
         changeColor={handleChange}
         correct={isCorret[1]}
         index={1}
+        delay={0.4}
       />
       <Tile
         color={colors[sequence[2]]}
         changeColor={handleChange}
         correct={isCorret[2]}
         index={2}
+        delay={0.6}
       />
       <Tile
         color={colors[sequence[3]]}
         changeColor={handleChange}
         correct={isCorret[3]}
         index={3}
+        delay={0.8}
       />
 
       <p className="text-lg font-medium  w-full text-center">Orange</p>
