@@ -10,6 +10,7 @@ const Game = ({ triggerSnow }: gameProps) => {
   const [sequence, setSequence] = useState([1, 3, 0, 2]);
   const [isCorret, setCorrect] = useState([false, false, false, false]);
   const [allCorrect, setAllCorrect] = useState(false);
+  const [help, setHelp] = useState(true);
   const colors = [
     "bg-lime-200",
     "bg-orange-300",
@@ -18,6 +19,7 @@ const Game = ({ triggerSnow }: gameProps) => {
   ];
   const correct = [0, 1, 2, 3];
   const handleChange = (index: number) => {
+    if (help) setHelp(false);
     if (!allCorrect) {
       let newSequence = [...sequence];
       newSequence[index] = (sequence[index] + 1) % 4;
@@ -42,7 +44,7 @@ const Game = ({ triggerSnow }: gameProps) => {
   useEffect(() => {}, [sequence]);
   return (
     <motion.div
-      exit={{ opacity: 0, scale: 1.1 }}
+      transition={{ staggerChildren: 0.2 }}
       className="mt-36 grid w-1/2 h-2/5 gap-4 grid-cols-4 grid-rows-2 grid-flow-rows"
     >
       <Tile
@@ -73,11 +75,14 @@ const Game = ({ triggerSnow }: gameProps) => {
         index={3}
         delay={0.8}
       />
-
-      <p className="text-lg font-medium  w-full text-center">Orange</p>
-      <p className="text-lg font-medium text-center">Emerald</p>
-      <p className="text-lg font-medium  w-full text-center">Lime</p>
-      <p className="text-lg font-medium w-full text-center">Violet</p>
+      {help ? (
+        <>
+          <p className="text-lg font-medium  w-full text-center">Orange</p>
+          <p className="text-lg font-medium text-center">Emerald</p>
+          <p className="text-lg font-medium  w-full text-center">Lime</p>
+          <p className="text-lg font-medium w-full text-center">Violet</p>
+        </>
+      ) : null}
     </motion.div>
   );
 };
