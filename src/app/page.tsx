@@ -1,5 +1,4 @@
 "use client";
-import Day3 from "@/components/day3/Day3";
 import Day4 from "@/components/day4/Day4";
 
 export default function Home() {
