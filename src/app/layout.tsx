@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "💕 Den 4",
+  title: "💕 Den 5",
   description: "I wuf you :D",
 };
 
