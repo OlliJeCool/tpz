@@ -10,14 +10,14 @@ interface SliderTileProps {
 }
 
 const tileImages = {
-  0: "/first.jpeg",
-  1: "/second.jpeg",
-  2: "/third.jpeg",
-  3: "/fourth.jpeg",
-  4: "/fifth.jpeg",
-  5: "/sixth.jpeg",
-  6: "/seventh.jpeg",
-  7: "/eighth.jpeg",
+  0: "static/images/first.jpeg",
+  1: "static/images/second.jpeg",
+  2: "static/images/third.jpeg",
+  3: "static/images/fourth.jpeg",
+  4: "static/images/fifth.jpeg",
+  5: "static/images/sixth.jpeg",
+  6: "static/images/seventh.jpeg",
+  7: "static/images/eighth.jpeg",
 };
 
 const SliderTile = ({
