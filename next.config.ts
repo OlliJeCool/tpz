@@ -1,11 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  images: {
-    loader: "akamai",
-    path: "/",
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
