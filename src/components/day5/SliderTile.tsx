@@ -42,6 +42,7 @@ const SliderTile = ({
     >
       {index != Infinity ? (
         <Image
+          //@ts-ignore
           src={tileImages[index]}
           alt={`Tile ${index}`}
           fill // This will make the image take the full space of its parent
