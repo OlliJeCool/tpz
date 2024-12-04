@@ -41,16 +41,14 @@ const SliderTile = ({
       } rounded-xl overflow-hidden`}
     >
       {index != Infinity ? (
-        <Image
+        <img
           //@ts-ignore
           src={tileImages[index]}
           alt={`Tile ${index}`}
-          fill // This will make the image take the full space of its parent
           style={{
             objectFit: "cover", // Ensures the image covers the div
             objectPosition: "center", // Centers the image
           }}
-          priority={index === 4} // Prioritize loading for the fifth image
           className="rounded-xl"
         />
       ) : (
