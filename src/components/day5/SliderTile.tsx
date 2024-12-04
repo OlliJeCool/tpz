@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 interface SliderTileProps {
   index: number;
@@ -16,7 +17,7 @@ const tileImages = {
   4: "/fifth.jpeg",
   5: "/sixth.jpeg",
   6: "/seventh.jpeg",
-  7: "/eigth.jpeg",
+  7: "/eighth.jpeg",
 };
 
 const SliderTile = ({
@@ -25,33 +26,44 @@ const SliderTile = ({
   isSolved,
   setGameEnd,
 }: SliderTileProps) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Trigger a re-render on the client side
+  }, []);
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 1.06 }}
       onClick={() => index != Infinity && onClick(index)}
-      style={{
-        //@ts-ignore
-        backgroundImage: `url(${tileImages[index]})`, // Use the image based on index
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      className={`w-full h-full flex items-center justify-center ${
-        index != Infinity && "bg-blue-100"
-      } rounded-xl`}
+      className={`relative w-full h-full flex items-center justify-center ${
+        index !== Infinity ? "bg-blue-100" : ""
+      } rounded-xl overflow-hidden`}
     >
-      {index != Infinity
-        ? null
-        : isSolved && (
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 1.06 }}
-              className="bg-blue-200 transition-colors duration-300 hover:bg-blue-300 py-3 px-5 rounded-xl"
-              onClick={() => setGameEnd(true)}
-            >
-              Hurá! :D
-            </motion.button>
-          )}
+      {index != Infinity ? (
+        <Image
+          src={tileImages[index]}
+          alt={`Tile ${index}`}
+          fill // This will make the image take the full space of its parent
+          style={{
+            objectFit: "cover", // Ensures the image covers the div
+            objectPosition: "center", // Centers the image
+          }}
+          priority={index === 4} // Prioritize loading for the fifth image
+          className="rounded-xl"
+        />
+      ) : (
+        isSolved && (
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 1.06 }}
+            className="bg-blue-200 transition-colors duration-300 hover:bg-blue-300 py-3 px-5 rounded-xl"
+            onClick={() => setGameEnd(true)}
+          >
+            Hurá! :D
+          </motion.button>
+        )
+      )}
     </motion.div>
   );
 };
